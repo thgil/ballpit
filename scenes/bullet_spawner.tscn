@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmti3rv4o3t1o"]
+
+[ext_resource type="Script" path="res://scripts/bullet_spawner.gd" id="1_ln6uv"]
+[ext_resource type="PackedScene" uid="uid://bqxa36hkpl1hj" path="res://assets/Mini Arena/Models/GLB format/banner.glb" id="2_y1yyn"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_ln6uv")
+
+[node name="banner2" parent="." instance=ExtResource("2_y1yyn")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://c31ithl1xlo1i"]
+
+[ext_resource type="PackedScene" uid="uid://b3nc42jy23m0y" path="res://assets/Mini Arena/Models/GLB format/character-soldier.glb" id="1_5e560"]
+[ext_resource type="AudioStream" uid="uid://bel1wkftycf4s" path="res://music/zapsplat_impacts_body_hit_punch_or_kick_001_90382.wav" id="2_74dsr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2s30q"]
+radius = 0.2
+height = 0.8
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ph2yk"]
+height = 0.6
+radius = 0.2
+
+[node name="Character" instance=ExtResource("1_5e560")]
+collision_layer = 2
+
+[node name="leg-left" parent="character-soldier/root" index="0" groups=["mesh_group"]]
+
+[node name="leg-right" parent="character-soldier/root" index="1" groups=["mesh_group"]]
+
+[node name="torso" parent="character-soldier/root" index="2" groups=["mesh_group"]]
+
+[node name="arm-left" parent="character-soldier/root/torso" index="0" groups=["mesh_group"]]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.0998968, 0.1115, 0.0115)
+
+[node name="arm-right" parent="character-soldier/root/torso" index="1" groups=["mesh_group"]]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.0998968, 0.1115, 0.0115)
+
+[node name="head" parent="character-soldier/root/torso" index="2" groups=["mesh_group"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.414492, 0)
+shape = SubResource("CapsuleShape3D_2s30q")
+
+[node name="Area3D" type="Area3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.414492, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("CylinderShape3D_ph2yk")
+
+[node name="hit_sound_player" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource("2_74dsr")

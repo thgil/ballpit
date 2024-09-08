@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://buurlh64atmyy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xpkq"]
+albedo_color = Color(0.795211, 0, 0.110746, 1)
+metallic = 0.3
+roughness = 0.14
+
+[sub_resource type="BoxMesh" id="BoxMesh_1sbke"]
+material = SubResource("StandardMaterial3D_2xpkq")
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="Curve" id="Curve_noyr6"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0, Vector2(0.4, 0.9), 0.0382377, 0.0382377, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_twl5k"]
+
+[node name="CPUParticles3D" type="CPUParticles3D"]
+emitting = false
+amount = 32
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+mesh = SubResource("BoxMesh_1sbke")
+spread = 180.0
+flatness = 0.47
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 7.0
+initial_velocity_max = 8.0
+linear_accel_min = -40.0
+linear_accel_max = -30.0
+scale_amount_curve = SubResource("Curve_noyr6")
+color_ramp = SubResource("Gradient_twl5k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
