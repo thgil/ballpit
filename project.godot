@@ -32,4 +32,5 @@ ui_shoot={
 
 [rendering]
 
+renderer/rendering_method.web="forward_plus"
 anti_aliasing/quality/msaa_3d=1
