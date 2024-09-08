@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpcteqrwlxdg2"]
+
+[ext_resource type="Script" path="res://scenes/pickups/pickup_test.gd" id="1_23rie"]
+[ext_resource type="PackedScene" uid="uid://sq302n6h2p8r" path="res://scenes/components/PickupableComponent.tscn" id="1_rgrx7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_3u0uw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g53kt"]
+
+[node name="PickupTest" type="Node3D"]
+script = ExtResource("1_23rie")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_3u0uw")
+
+[node name="PickupableComponent" parent="." node_paths=PackedStringArray("area") instance=ExtResource("1_rgrx7")]
+area = NodePath("../Area3D")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_g53kt")
+
+[connection signal="picked_up" from="PickupableComponent" to="." method="_on_pickupable_component_picked_up"]

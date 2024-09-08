@@ -6,8 +6,9 @@ class_name Player
 @export var hit_particles_scene : PackedScene  # Scene for hit particles
 
 # Constants for movement
-const SPEED = 3.0
+@export var SPEED: float = 3.0
 @export var JUMP_VELOCITY = 10
+@export var GRAVITY: float = 70.0
 @export var PROJECTILE_SPEED_BASE = 10.0
 var projectile_speed: float
 
@@ -15,6 +16,10 @@ var projectile_speed: float
 @onready var animation_player = $AnimationPlayer
 @onready var character_mesh = $"character-soldier"
 @onready var hit_sound_player: AudioStreamPlayer = $hit_sound_player
+
+# Double jump related variables
+@export var can_double_jump: bool = false  # Whether the player can double jump
+var has_double_jumped: bool = false  # To track if a double jump has been used
 
 # Power-up related variables
 var power_up_active = false
@@ -42,11 +47,13 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Handle gravity
 	if not is_on_floor():
-		velocity.y += Vector3(0, -70, 0).y * delta
+		velocity.y += Vector3(0, -GRAVITY, 0).y * delta
 	else:
-		if Input.is_action_just_pressed("ui_accept"):
-			velocity.y = JUMP_VELOCITY
-			play_animation("jump")
+		# Reset double jump when the player lands
+		has_double_jumped = false
+
+	# Handle jumping
+	handle_jumping()
 
 	# Handle movement input
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -79,14 +86,17 @@ func _physics_process(delta: float) -> void:
 	# Apply movement and slide
 	move_and_slide()
 
-@rpc("any_peer", "reliable")
-func network_shoot(shoot_position: Vector3, shoot_direction: Vector3, projectile_speed: float):
-	# Called remotely to spawn projectiles on all clients
-	var projectile_scene = preload("res://scenes/Projectile.tscn")
-	var projectile = projectile_scene.instantiate()
-	projectile.global_transform.origin = shoot_position
-	projectile.shoot(shoot_direction, projectile_speed)
-	get_tree().current_scene.add_child(projectile)
+func handle_jumping() -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		if is_on_floor():
+			# Regular jump
+			velocity.y = JUMP_VELOCITY
+			play_animation("jump")
+		elif can_double_jump and not has_double_jumped:
+			# Double jump logic
+			velocity.y = JUMP_VELOCITY
+			has_double_jumped = true
+			play_animation("jump")
 
 func shoot() -> void:
 	# Get the shoot direction (the character is assumed to be facing the Z direction)
@@ -117,14 +127,6 @@ func shoot() -> void:
 func play_animation(anim_name: String) -> void:
 	animation_player.play(anim_name)
 	current_animation = anim_name
-
-func apply_power_up(speed_bonus: float, duration: float) -> void:
-	# Apply power-up to increase projectile speed
-	power_up_active = true
-	power_up_speed_bonus = speed_bonus
-	get_tree().create_timer(duration)
-	power_up_active = false
-	power_up_speed_bonus = 1.0
 
 func apply_damage(damage: int) -> void:
 	play_hit_sound()
@@ -191,3 +193,14 @@ func _reset_materials():
 		if child is MeshInstance3D:
 			child.set_surface_override_material(0, original_materials[i])
 			i += 1
+
+
+func _on_body_entered(body: Node) -> void:
+	if body is Pickup:
+		print('hit pickup')
+		
+		# Apply the power-up to the player
+		body.apply_to(self)
+
+		# Remove the power-up from the scene
+		body.queue_free()
