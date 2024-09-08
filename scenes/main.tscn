@@ -16,9 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cyx5534vfnmet" path="res://assets/Mini Arena/Models/GLB format/wall.glb" id="16_08q3n"]
 [ext_resource type="PackedScene" uid="uid://dmti3rv4o3t1o" path="res://scenes/bullet_spawner.tscn" id="16_d05tn"]
 [ext_resource type="Shader" path="res://shaders/neon.gdshader" id="17_41a8l"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wagjg"]
-albedo_color = Color(0.979894, 0.741609, 0.603584, 1)
+[ext_resource type="PackedScene" uid="uid://cjst8buukppv7" path="res://assets/Mini Arena/Models/GLB format/floor.glb" id="17_qeow3"]
 
 [sub_resource type="AudioStreamMP3" id="AudioStreamMP3_cvg4u"]
 data = PackedByteArray("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")
@@ -34,8 +32,10 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jh813"]
-albedo_color = Color(0.521141, 0.521141, 0.521141, 1)
+[sub_resource type="Environment" id="Environment_fim7i"]
+ambient_light_source = 3
+ambient_light_color = Color(1, 0.604288, 0.259978, 1)
+fog_enabled = true
 
 [node name="Main" type="Node3D"]
 
@@ -45,7 +45,9 @@ autoplay = true
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.642788, -0.586824, 0.492404, 0, 0.642788, 0.766044, -0.766045, 0.492404, -0.413176, 0, 0, 0)
+light_color = Color(0.922894, 0.925484, 0.907618, 1)
 light_energy = 0.25
+light_bake_mode = 0
 shadow_enabled = true
 shadow_blur = 0.5
 directional_shadow_split_1 = 0.05
@@ -63,11 +65,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51468, 0, 0.295037)
 
 [node name="Tree (small)" parent="Sample" instance=ExtResource("3_lyib0")]
 transform = Transform3D(0.565685, 0, 0.565685, 0, 0.8, 0, -0.565685, 0, 0.565685, -1.75756, -4.76837e-07, 0.790646)
-
-[node name="Floor" type="CSGBox3D" parent="Sample"]
-material_override = SubResource("StandardMaterial3D_wagjg")
-use_collision = true
-size = Vector3(100, 0, 100)
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 34.0
@@ -112,12 +109,6 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, -0.561581,
 environment = ExtResource("1_x8oc8")
 fov = 60.0
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6644, 0.543325, 0.336473)
-use_collision = true
-size = Vector3(1, 1.5, 15)
-material = SubResource("StandardMaterial3D_jh813")
-
 [node name="BulletSpawner1" parent="." instance=ExtResource("16_d05tn")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.48925, 0, -1.60839)
 path_speed = 2.0
@@ -146,9 +137,33 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5.49732, 4.76837e-07, -7.2127
 [node name="wall2" parent="." instance=ExtResource("16_08q3n")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.45327, -4.76837e-07, -7.24229)
 
+[node name="wall3" parent="." instance=ExtResource("16_08q3n")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.99301, -0.0143065, -1.63459)
+
+[node name="wall4" parent="." instance=ExtResource("16_08q3n")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.99675, -4.76837e-07, 0.354057)
+
+[node name="wall5" parent="." instance=ExtResource("16_08q3n")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.99301, -0.0143065, -5.62904)
+
+[node name="wall6" parent="." instance=ExtResource("16_08q3n")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.99675, -4.76837e-07, -3.64039)
+
+[node name="wall7" parent="." instance=ExtResource("16_08q3n")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.99301, -0.0143065, 2.34688)
+
+[node name="wall8" parent="." instance=ExtResource("16_08q3n")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.99675, -4.76837e-07, 4.33553)
+
 [node name="Character2" parent="." instance=ExtResource("10_7u5m0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61946, 0.177171, 0.00961253)
 script = ExtResource("11_vdge5")
 hit_sound = SubResource("AudioStreamMP3_cvg4u")
 hit_particles_scene = ExtResource("13_oyc72")
 PROJECTILE_SPEED_BASE = 5.0
+
+[node name="floor2" parent="." instance=ExtResource("17_qeow3")]
+transform = Transform3D(41.0094, 0, 0, 0, 1, 0, 0, 0, 41.0094, -0.0166178, 0, 0.00476742)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fim7i")
