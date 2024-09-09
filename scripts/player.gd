@@ -2,13 +2,16 @@ extends CharacterBody3D
 
 class_name Player
 
+signal health_changed(health: int)
+signal player_died()
+
 @export var hit_sound : AudioStream  # Expose the sound effect to the editor
 @export var hit_particles_scene : PackedScene  # Scene for hit particles
 
 # Constants for movement
 @export var SPEED: float = 3.0
-@export var JUMP_VELOCITY = 10
-@export var GRAVITY: float = 70.0
+@export var JUMP_VELOCITY = 12
+@export var GRAVITY: float = 60.0
 @export var PROJECTILE_SPEED_BASE = 10.0
 var projectile_speed: float
 
@@ -43,6 +46,8 @@ func _ready() -> void:
 
 	# Store all original materials for the meshes in the character
 	store_original_materials()
+	
+	health_changed.emit(health)
 
 func _physics_process(delta: float) -> void:
 	# Handle gravity
@@ -135,11 +140,12 @@ func apply_damage(damage: int) -> void:
 	emit_hit_particles()
 	
 	health -= damage
+	health_changed.emit(health)
 	if health <= 0:
 		die()
 
 func die() -> void:
-	# Handle the player death logic here
+	player_died.emit()
 	queue_free()  # Remove the player from the scene (or respawn, etc.)
 
 # Function to store the original materials of all MeshInstance3D nodes
@@ -193,7 +199,6 @@ func _reset_materials():
 		if child is MeshInstance3D:
 			child.set_surface_override_material(0, original_materials[i])
 			i += 1
-
 
 func _on_body_entered(body: Node) -> void:
 	if body is Pickup:

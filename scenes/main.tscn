@@ -8,10 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://nl2p4gn2t5ke" path="res://assets/Mini Arena/Models/GLB format/statue.glb" id="6_drebv"]
 [ext_resource type="PackedScene" uid="uid://c31ithl1xlo1i" path="res://scenes/character.tscn" id="10_7u5m0"]
 [ext_resource type="Script" path="res://scripts/fps.gd" id="11_ml8i0"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="11_vdge5"]
 [ext_resource type="PackedScene" uid="uid://cddf0g7tomost" path="res://assets/Mini Arena/Models/GLB format/column-damaged.glb" id="12_amj71"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="12_ia4e6"]
-[ext_resource type="PackedScene" uid="uid://buurlh64atmyy" path="res://scenes/hit_particles.tscn" id="13_oyc72"]
 [ext_resource type="PackedScene" uid="uid://c6djdyyexv0ax" path="res://assets/Mini Arena/Models/GLB format/trophy.glb" id="14_jic4k"]
 [ext_resource type="PackedScene" uid="uid://c2ak8n453so1a" path="res://assets/Mini Arena/Models/GLB format/wall-gate.glb" id="15_qwcfg"]
 [ext_resource type="PackedScene" uid="uid://cyx5534vfnmet" path="res://assets/Mini Arena/Models/GLB format/wall.glb" id="16_08q3n"]
@@ -25,9 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://cnc1oe5df6s2u" path="res://scenes/enemy.tscn" id="22_lwvm2"]
 [ext_resource type="Script" path="res://scenes/navigation_region_3d.gd" id="22_r86m5"]
 [ext_resource type="Script" path="res://scenes/animation_player.gd" id="24_65m8m"]
-
-[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_cvg4u"]
-data = PackedByteArray("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")
+[ext_resource type="Script" path="res://scenes/rock.gd" id="26_c6yf3"]
 
 [sub_resource type="Curve3D" id="Curve3D_6t4wx"]
 _data = {
@@ -52,7 +48,7 @@ loop_mode = 1
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BulletSpawner3")
+tracks/0/path = NodePath("Spawners/BulletSpawner3")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -72,11 +68,63 @@ tracks/0/keys = {
 "method": &"shoot_projectile"
 }]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"do_event"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vvmjf"]
+resource_name = "bullet_test"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.433333, 0.633333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"do_event"
+}, {
+"args": [],
+"method": &"do_event"
+}, {
+"args": [],
+"method": &"do_event"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fyloh"]
 _data = {
-"bullet_hell": SubResource("Animation_soe18")
+"bullet_hell": SubResource("Animation_soe18"),
+"bullet_test": SubResource("Animation_vvmjf")
 }
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_v7vjx"]
+_surfaces = [{
+"aabb": AABB(-0.5, -0.5, -0.433013, 1, 1, 0.866025),
+"format": 34359742471,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIAAAACAAMAAAADAAQAAAAEAAUAAAAFAAYAAAAGAAEABwAIAAkABwAKAAgABwALAAoABwAMAAsABwANAAwABwAJAA0AAQAJAAgAAQAIAAIAAgAIAAoAAgAKAAMAAwAKAAsAAwALAAQABAALAAwABAAMAAUABQAMAA0ABQANAAYABgANAAkABgAJAAEA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 14,
+"vertex_data": PackedByteArray("AAAAAAAAAD8AAAAAAAAAPwAAAD8AAAAAAACAPgAAAD/Xs90+AACAvgAAAD/Xs90+AAAAvwAAAD8yMY0kAACAvgAAAD/Xs92+AACAPgAAAD/Xs92+AAAAAAAAAL8AAAAAAACAPgAAAL/Xs90+AAAAPwAAAL8AAAAAAACAvgAAAL/Xs90+AAAAvwAAAL8yMY0kAACAvgAAAL/Xs92+AACAPgAAAL/Xs92+/3///wAA/786wTayTlqW0aeUtK/6T2auUlmorGx7JqA2MsS+4VbdqrQvVuuJN3GVVdNR2RshjZD/fwAAAAD/v6ymVlP7O/2dyM06QUBqEqpXa0pQijYSi8Q+yE0xZqDXqSytJk5Atb1K0KgU6XAunw==")
+}]
 
 [node name="Main" type="Node3D"]
 
@@ -96,12 +144,14 @@ directional_shadow_split_2 = 0.1
 directional_shadow_split_3 = 0.3
 directional_shadow_fade_start = 1.0
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasGroup"]
 offset_right = 34.0
 offset_bottom = 28.0
 color = Color(0.167451, 0.167451, 0.167451, 1)
 
-[node name="FPS" type="Label" parent="ColorRect"]
+[node name="FPS" type="Label" parent="CanvasGroup/ColorRect"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
@@ -113,14 +163,10 @@ environment = ExtResource("1_x8oc8")
 fov = 60.0
 script = ExtResource("12_ia4e6")
 player = NodePath("../Character")
-buffer_height = 4.0
+buffer_width = 2.0
+buffer_height = 1.0
 
 [node name="Character" parent="." instance=ExtResource("10_7u5m0")]
-script = ExtResource("11_vdge5")
-hit_sound = SubResource("AudioStreamMP3_cvg4u")
-hit_particles_scene = ExtResource("13_oyc72")
-PROJECTILE_SPEED_BASE = 5.0
-can_double_jump = true
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.22243, -0.0131245, -5.737)
@@ -130,18 +176,6 @@ curve = SubResource("Curve3D_6t4wx")
 rotation_mode = 0
 loop = false
 tilt_enabled = false
-
-[node name="BulletSpawner1" parent="." instance=ExtResource("16_d05tn")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.48925, 0, -1.60839)
-path_speed = 2.0
-path = NodePath("../Path3D/PathFollow3D")
-
-[node name="BulletSpawner2" parent="." instance=ExtResource("16_d05tn")]
-transform = Transform3D(0.431424, 0, -0.902149, 0, 1, 0, 0.902149, 0, 0.431424, 1.30246, 0, -6.47994)
-
-[node name="BulletSpawner3" parent="." instance=ExtResource("16_d05tn")]
-transform = Transform3D(0.827237, 0, -0.561853, 0, 1, 0, 0.561853, 0, 0.827237, 5.49738, -4.76837e-07, 0.311899)
-script = ExtResource("17_72rp7")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fim7i")
@@ -216,9 +250,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.996
 
 [node name="Minotaur" parent="." instance=ExtResource("22_lwvm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.43081, 0.90969, -3.29626)
-slow_down_distance = 5.0
-target = NodePath("../Character")
-target_reached_distance = 3.0
+movement_speed = 2.0
+slow_down_distance = 2.0
+target_reached_distance = 2.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -226,3 +260,58 @@ libraries = {
 }
 speed_scale = 2.0
 script = ExtResource("24_65m8m")
+
+[node name="Spawners" type="Node3D" parent="."]
+
+[node name="BulletSpawner1" parent="Spawners" instance=ExtResource("16_d05tn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.48925, 0, -1.60839)
+path_speed = 2.0
+path = NodePath("../../Path3D/PathFollow3D")
+
+[node name="BulletSpawner2" parent="Spawners" instance=ExtResource("16_d05tn")]
+transform = Transform3D(0.431424, 0, -0.902149, 0, 1, 0, 0.902149, 0, 0.431424, 1.30246, 0, -6.47994)
+
+[node name="BulletSpawner3" parent="Spawners" groups=["spawner"] instance=ExtResource("16_d05tn")]
+transform = Transform3D(0.998995, 0, -0.0448231, 0, 1, 0, 0.0448231, 0, 0.998995, 0.033, 0, -10.032)
+script = ExtResource("17_72rp7")
+
+[node name="BulletSpawner4" parent="Spawners" groups=["spawner"] instance=ExtResource("16_d05tn")]
+transform = Transform3D(0.790711, 0, 0.612189, 0, 1, 0, -0.612189, 0, 0.790711, -5.56208, 9.53674e-07, -8.54994)
+script = ExtResource("17_72rp7")
+
+[node name="BulletSpawner5" parent="Spawners" groups=["spawner"] instance=ExtResource("16_d05tn")]
+transform = Transform3D(0.625665, 0, 0.780091, 0, 1, 0, -0.780091, 0, 0.625665, -7.98847, 0, -5.36414)
+script = ExtResource("17_72rp7")
+
+[node name="BulletSpawner6" parent="Spawners" groups=["spawner"] instance=ExtResource("16_d05tn")]
+transform = Transform3D(-0.0276766, 0, 0.999617, 0, 1, 0, -0.999617, 0, -0.0276766, -10.0934, 9.53674e-07, 0.027575)
+script = ExtResource("17_72rp7")
+
+[node name="BulletSpawner7" parent="Spawners" groups=["spawner"] instance=ExtResource("16_d05tn")]
+transform = Transform3D(-0.999842, 0, 0.0177496, 0, 1, 0, -0.0177496, 0, -0.999842, 0.0903935, 0, 10.2005)
+script = ExtResource("17_72rp7")
+
+[node name="BulletSpawner8" parent="Spawners" groups=["spawner"] instance=ExtResource("16_d05tn")]
+transform = Transform3D(-0.77384, 0, -0.63338, 0, 1, 0, 0.63338, 0, -0.77384, 5.64328, 9.53674e-07, 8.56742)
+script = ExtResource("17_72rp7")
+
+[node name="BulletSpawner9" parent="Spawners" groups=["spawner"] instance=ExtResource("16_d05tn")]
+transform = Transform3D(-0.604308, 0, -0.796751, 0, 1, 0, 0.796751, 0, -0.604308, 7.98249, 0, 5.31707)
+script = ExtResource("17_72rp7")
+
+[node name="BulletSpawner10" parent="Spawners" groups=["spawner"] instance=ExtResource("16_d05tn")]
+transform = Transform3D(0.0547404, 0, -0.9985, 0, 1, 0, 0.9985, 0, 0.0547404, 9.94065, 9.53674e-07, -0.129679)
+script = ExtResource("17_72rp7")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10759, 0)
+inner_radius = 10.0
+outer_radius = 15.0
+sides = 32
+ring_sides = 5
+smooth_faces = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.418826, 0.78584, 0.449707, 0, 0.49711, -0.867687, -0.904757, 0.363766, 0.208177, 1.14, 1, 1.705)
+mesh = SubResource("ArrayMesh_v7vjx")
+script = ExtResource("26_c6yf3")

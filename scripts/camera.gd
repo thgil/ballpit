@@ -8,7 +8,7 @@ extends Camera3D
 @onready var player_node = get_node(player) as CharacterBody3D  # The player node reference
 
 var camera_target_position: Vector3
-@export var offset: Vector3 = Vector3(0,0,-5.0)
+@export var offset: Vector3 = Vector3(0,0,-4.0)
 
 func _ready() -> void:
 	# Initialize the camera's target position

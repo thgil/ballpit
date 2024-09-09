@@ -36,4 +36,4 @@ ui_shoot={
 
 [rendering]
 
-anti_aliasing/quality/msaa_3d=1
+anti_aliasing/screen_space_roughness_limiter/enabled=false
