@@ -40,7 +40,7 @@ func apply_to(player: Player) -> void:
 		apply_temporary(player)
 
 # Function to apply a permanent power-up
-func apply_permanent(player: Player) -> void:
+func apply_permanent(_player: Player) -> void:
 	# To be implemented by specific permanent power-ups
 	pass
 
@@ -52,11 +52,11 @@ func apply_temporary(player: Player) -> void:
 	on_expire(player)
 
 # Called when the power-up duration expires
-func on_expire(player: Player) -> void:
+func on_expire(_player: Player) -> void:
 	# To be implemented by specific temporary power-ups
 	pass
 
-func apply_power_up_effect(player: Player) -> void:
+func apply_power_up_effect(_player: Player) -> void:
 	# To be implemented in specific power-up subclasses
 	pass
 

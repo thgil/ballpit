@@ -26,7 +26,7 @@ func on_pickup(player: Player) -> void:
 	_has_been_picked = true
 
 	# Emit the signal so other objects can react to this event
-	emit_signal("picked_up", player)
+	picked_up.emit(player)
 
 	# Declare sound_player outside the conditional block
 	var sound_player: AudioStreamPlayer3D

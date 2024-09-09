@@ -7,11 +7,11 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
-func _on_pickupable_component_picked_up(player: Player) -> void:
+func _on_pickupable_component_picked_up(_player: Player) -> void:
 	print('test entered')
 	queue_free()
 	pass # Replace with function body.
