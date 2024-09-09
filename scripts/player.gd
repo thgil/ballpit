@@ -8,6 +8,9 @@ signal player_died()
 @export var hit_sound : AudioStream  # Expose the sound effect to the editor
 @export var hit_particles_scene : PackedScene  # Scene for hit particles
 
+@export var invulnerability_time: float = 0.2  # Time (in seconds) for invulnerability after taking damage
+var is_invulnerable: bool = false
+
 # Constants for movement
 @export var SPEED: float = 3.0
 @export var JUMP_VELOCITY = 12
@@ -134,6 +137,9 @@ func play_animation(anim_name: String) -> void:
 	current_animation = anim_name
 
 func apply_damage(damage: int) -> void:
+	if is_invulnerable:
+		return  # Ignore damage if the player is invulnerable
+
 	play_hit_sound()
 	flash_white()
 	scale_effect()
@@ -143,6 +149,27 @@ func apply_damage(damage: int) -> void:
 	health_changed.emit(health)
 	if health <= 0:
 		die()
+	else:
+		# Trigger invulnerability after taking damage
+		start_invulnerability()
+
+func start_invulnerability() -> void:
+	is_invulnerable = true
+
+	# Make the player flash or turn semi-transparent for visual feedback
+	flash_white()
+
+	# Start a timer to end invulnerability after `invulnerability_time`
+	var timer = Timer.new()
+	timer.wait_time = invulnerability_time
+	timer.one_shot = true
+	timer.timeout.connect(_end_invulnerability)
+	add_child(timer)
+	timer.start()
+
+func _end_invulnerability() -> void:
+	is_invulnerable = false
+	_reset_materials()  # Reset the character materials
 
 func die() -> void:
 	player_died.emit()
@@ -165,17 +192,17 @@ func flash_white():
 	
 	# Use a Tween to gradually transition back to the original material
 	var tween = create_tween()  # Create a tween using the new method
-	tween.tween_callback(_reset_materials).set_delay(0.1)  # After 0.3 seconds, reset to original material
+	tween.tween_callback(_reset_materials).set_delay(invulnerability_time)
 
 func scale_effect():
 	# Create a scaling effect
 	var tween = create_tween()
 
 	# Scale up to 1.2x size
-	tween.tween_property(self, "scale", Vector3(1.2, 1.2, 1.2), 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "scale", Vector3(1.2, 1.2, 1.2), invulnerability_time/2.0).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN_OUT)
 
 	# Scale back down to original size
-	tween.tween_property(self, "scale", Vector3(1, 1, 1), 0.1).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "scale", Vector3(1, 1, 1), invulnerability_time/2.0).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN_OUT)
 
 func play_hit_sound():
 	if hit_sound_player and hit_sound_player.stream:

@@ -74,3 +74,5 @@ text = "Health 10/100"
 label_settings = SubResource("LabelSettings_hxhpu")
 script = ExtResource("4_kyc5f")
 player = NodePath("../..")
+
+[node name="Timer" type="Timer" parent="." index="6"]
